@@ -152,12 +152,11 @@ movie_indices = pd.Series(df.index, index=df['title'])
 cv = CountVectorizer(max_features=5000, stop_words='english')
 vectors = cv.fit_transform(df['tags']).toarray()
 similarity = cosine_similarity(vectors)
-
-
+print(similarity) # print similarity matrix
 # Save similarity matrix
 pickle.dump(similarity, open('similarity.pkl', 'wb'))
 
-
+# Load similarity matrix    
 def recommend_movies(movie, n=5):
     # Find the index of the movie
     movie_index = df[df['title'] == movie].index[0]
@@ -172,6 +171,10 @@ def recommend_movies(movie, n=5):
     print(f"\nRecommended movies similar to {movie}:")
     for i, score in movie_list:
         print(f"{df['title'].iloc[i]} (similarity score: {score:.2f})")
+
+
+# Load the similarity matrix from the file
+similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 
 # Example usage
