@@ -20,6 +20,7 @@ from sklearn.cluster import DBSCAN # for clustering
 import warnings # for handling warnings
 warnings.filterwarnings('ignore') # ignore warnings
 
+
 movies = pd.read_csv("C:/Users/KIIT/Downloads/tmdb_5000_movies.csv") # load movies dataset
 credits = pd.read_csv("C:/Users/KIIT/Downloads/tmdb_5000_credits.csv") # load credits dataset
 
